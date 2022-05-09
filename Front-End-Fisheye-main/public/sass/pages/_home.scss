@@ -1,1 +1,63 @@
 @use '../utils' as *;
+
+.photographer_section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+.photographer_section article{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photographer_section a{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photographer_section article h2 {
+    color: $color-secondary;
+    font-size: 36px;
+    font-weight:500;
+    margin-bottom: 0;
+}
+
+.photographer_section article img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100px;
+}
+
+.photographer_section article p{
+    margin: 0;
+}
+
+.photographer_section .citycountry{
+    color: $color-primary;
+    font-size: 13px;
+    font-weight: 400;
+}
+.photographer_section .tagline{
+    font-size: 12px;
+}
+.photographer_section .price{
+    color: $grey;
+    font-size: 11px;
+}
+
+.hover_css:focus,
+.hover_css:hover {
+    color: $black;
+    background-color: $color-secondary;
+    border: solid 1px $black;
+}
+

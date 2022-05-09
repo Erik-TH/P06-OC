@@ -1,0 +1,59 @@
+@use '../utils' as *;
+
+.medias_section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 100px;
+}
+
+.medias_section a {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.medias_section article{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.medias_section article h2{
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    color: $color-primary;
+}
+
+.medias_section article h2:hover{
+  cursor: pointer;
+}
+
+.medias_section article img, .medias_section article video {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+}
+
+.medias_section article img:hover, .medias_section article video:hover {
+  cursor: pointer;
+}
+
+.medias_section article p{
+    margin: 0;
+}
+.media-bottom{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 24px;
+}
