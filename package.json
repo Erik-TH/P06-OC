@@ -1,7 +1,7 @@
 {
   "name": "front-end-fisheye-main",
   "version": "1.0.0",
-  "description": "## Démarrer le projet",
+  "description": "## FishEye - Projet 6 de la formation \"développeur front-end\" de OpenClassrooms ### Compétences évaluées :",
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch ./sass/main.scss ./public/css/style.css"
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Erik-TH/P06-OC/issues"
   },
-  "homepage": "https://github.com/Erik-TH/P06-OC#readme"
+  "homepage": "https://github.com/Erik-TH/P06-OC#readme",
+  "devDependencies": {
+    "eslint": "^8.16.0"
+  }
 }

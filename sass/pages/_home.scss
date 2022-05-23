@@ -1,0 +1,23 @@
+// Home page style
+
+@use "../utils" as *;
+
+.photographers-list{
+    display: grid;
+    gap: 30px;
+    
+    @include breakpoints(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 30px;
+    }
+    
+    @include breakpoints(desktop) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.no-photographer{
+    display: none;
+    text-align: center;
+    grid-area: 1 / 1 / 2 / 4;
+}

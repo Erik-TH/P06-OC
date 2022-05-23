@@ -1,0 +1,50 @@
+@use "../utils" as *;
+
+.header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px 0;
+
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    
+    h1{
+        grid-area: 1 / 2 / 2 / 3;
+        place-self: center end;
+        font-size: 0.875rem;
+        color: $colorPrimary;
+
+        @include breakpoints(tablet) {
+            font-size: 1.75rem;
+        }
+
+        @include breakpoints(desktop) {
+            font-size: 2.25rem;
+        }
+    }
+    
+    &__logo {
+        grid-area: 1 / 1 / 2 / 2;
+        place-self: center start;
+        height: 31px;
+
+        @include breakpoints(tablet) {
+            height: 37px;
+            img{ width: 150px; }            
+        }
+        
+        @include breakpoints(desktop) {
+            height: 50px;
+        }
+        
+        img { 
+            width: 125px;
+
+            @include breakpoints(desktop) {
+                width: 200px;
+            }
+        }
+    }
+}

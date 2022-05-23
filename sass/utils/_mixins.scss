@@ -1,0 +1,16 @@
+@use "./variables" as *;
+
+
+@mixin breakpoints($screen) {
+    @if ($screen == tablet) {
+      @media screen and (min-width: map-get($map: $breakpoints, $key: tablet)) {
+        @content;
+      }
+    } 
+    
+    @else if ($screen == desktop) {
+      @media screen and (min-width: map-get($map: $breakpoints, $key: desktop)) {
+        @content;
+      }
+    }
+  }

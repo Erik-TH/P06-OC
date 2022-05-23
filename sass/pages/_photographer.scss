@@ -1,0 +1,23 @@
+// Photorgapher page style
+
+@use "../utils" as *;
+
+.gallery{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+
+    // 950px
+
+    @include breakpoints(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    // 1200px
+
+    @include breakpoints(desktop) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

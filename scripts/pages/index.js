@@ -1,45 +1,61 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+// -----------------------------------------
+// Import des classes
+// -----------------------------------------
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+import Api from '../api/PhotographersApi.js'
+import Error from '../utils/Error.js'
+import Photographer from '../factories/PhotographerFactory.js'
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+// -----------------------------------------
+// Définition des cibles sur le document
+// -----------------------------------------
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+let tagTarget = document.getElementById('tags')
+let photographerTarget = document.getElementById('photographers-list')
+
+// -----------------------------------------
+// Fonctions
+// -----------------------------------------
+
+const injectElement = (element, target) => {
+    target.appendChild(element)
+}
+
+// -----------------------------------------
+// Comportement par défaut (une fois la page chargé)
+// -----------------------------------------
+
+// const connected = await Api.init()
+
+try {
+    await Api.init()
+} catch (error) {
+    Error.print(error)
+}
+
+// Tags
+
+    // Configuration du comportement des tags sur la pages
+    // Tag.config({
+    //     oneAtTime: false,
+    //     callback: () => { Photographer.setVisbilityFromFilters() }
+    // })
+
+    // Création des éléments
+    // Api.getAllTags().forEach(tag => new Tag(tag))
+
+    // Injection dans le document
+    // Tag.instances.forEach(i => {
+    //     injectElement(i.element, tagTarget)
+    // })
+
+
+// Photographe
+
+    // Création des éléments
+    Api.getAllPhotographers().forEach(p => new Photographer(p))
+
+    // Injection dans le document
+    Photographer.instances.forEach(i => {
+        injectElement(i.element, photographerTarget)
+    })
