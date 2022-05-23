@@ -9,7 +9,7 @@ export default class LightBox {
 	}
 
 	/**
-     * Créer la vue et la retourne
+     * add lightbox to html
      * @returns {HTMLElement}
      */
 	getView = () => {
@@ -78,7 +78,7 @@ export default class LightBox {
 	};
 
 	/**
-     * Cette fonction controle les entrés clavier sur la lightbox
+     * keyboard action key
      * @param {KeybordEvent} e 
      */
 	keyControl = (e) => {
@@ -115,7 +115,7 @@ export default class LightBox {
 	};
 
 	/**
-     * Cette fonction créer le html qui contient la media et le retourne
+     * media content
      * @returns {HTMLElement}
      */
 	getMedia = () => {
@@ -137,7 +137,7 @@ export default class LightBox {
 	};
 
 	/**
-     * Cette fonction ajoute la vue au document
+     * display
      */
 	render = () => {
 		this.target.innerHTML = '';

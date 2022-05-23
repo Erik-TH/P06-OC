@@ -15,6 +15,7 @@ export default class Media {
 		this.alt = data.alt;
 		this.liked = false;
 		this.element = this.getView();
+
 		Media.target = target;
 
 
@@ -35,12 +36,12 @@ export default class Media {
 	};
 
 	/**
-     * Tri les médias
-     * @param {string} what popularity / date / title
+     * sort medias ; popularity by default
+     * @param {string} argument type : popularity / date / title
      */
-	static sortBy = (what) => {
+	static sortBy = (argument) => {
 		let element = [...Media.instances];
-		switch (what) {
+		switch (argument) {
 		case 'date':
 			element.sort((a,b) => new Date(b.date) - new Date(a.date));
 			break;
@@ -59,18 +60,7 @@ export default class Media {
 	};
 
 	/**
-     * Défini si chaque media et visible ou non selon le tag selectionné
-     */
-	// static setVisbilityFromFilters = () => {
-
-	//     Media.instances.forEach(media => {
-	//         let res = media.tags.filter(tag => Tag.activeTags.includes(tag))
-	//         media.element.style.display = res.length == Tag.activeTags.length ? "block" : "none"
-	//     })
-	// }
-
-	/**
-     * Incrémente ou décrémente le nombre de like d'un media
+     * like increment / removed
      */
 	like = () => {
 		if (this.liked){
@@ -89,7 +79,7 @@ export default class Media {
 	};
 
 	/**
-     * Creer et retourne la vue d'un media
+     * return display media in container
      * @returns {HTMLElement}
      */
 	getView = () => {
@@ -131,7 +121,7 @@ export default class Media {
 	};
 
 	/**
-     * Créer et retourne le bouton de like
+     * like btn
      * @returns {HTMLElement}
      */
 	getLikeBtn = () => {
@@ -153,7 +143,7 @@ export default class Media {
 	};
 
 	/**
-     * Créer la miniature du media et le retourne
+     * thumbnail in gallery - miniature illustration
      * @returns {string}
      */
 	getThumbnail = () => {

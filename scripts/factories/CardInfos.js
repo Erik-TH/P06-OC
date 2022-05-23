@@ -6,14 +6,14 @@ export default class CardInfos {
 	}
 
 	/**
-     * Modifie le nombre total de like du photographe courant sur la vue
+     * update total like on card-info
      */
 	static updateTotalLike = () => {
 		document.getElementById('counter-likes').innerHTML = Media.totalLikes;
 	};
 
 	/**
-     * Cette fonction créer la vue de la card d'information du photographe (nombre de like total + prix)
+     * function view photographer's card-infos : total like ; price
      * @returns {HTMLElement}
      */
 	getView = () => {
@@ -24,7 +24,9 @@ export default class CardInfos {
 		let counterLike = document.createElement('div');
 		counterLike.setAttribute('class', 'card-infos__nb-likes');
 		counterLike.innerHTML =
+
         `<span id="counter-likes" class="nb-likes">${Media.totalLikes}</span>
+
         <i class="fas fa-heart" aria-label="likes"></i>`;
 
 		container.appendChild(counterLike);

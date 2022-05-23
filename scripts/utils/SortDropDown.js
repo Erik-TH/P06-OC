@@ -18,7 +18,7 @@ export default class SortDropDown {
      * @returns {HTMLElement} HTMLElement
      */
 	getView = () => {
-		// Création des éléments
+		// add element
 		let sortView = document.createElement('div');
 		sortView.setAttribute('class', 'sort');
 
@@ -45,7 +45,7 @@ export default class SortDropDown {
 		let sortList = this.getSortList();
 		this.list = sortList;
 
-		// Création de l'arborescence
+		// tree structure
 		sortWrapper.appendChild(sortBtn);
 		sortWrapper.appendChild(sortList);
 
@@ -88,7 +88,7 @@ export default class SortDropDown {
 	};
 
 	/**
-     * Change l'état du bouton de tri lorsqu'une option est cliqué
+     * state filter button after clicked
      * @param {PointerEvent} e 
      */
 	updateState = (e) => {
@@ -106,7 +106,7 @@ export default class SortDropDown {
 	};
 
 	/**
-     * Ouvre ou ferme le dropdown selon son état d'origine
+     * toggle drop down menu
      */
 	toggleDropDown = () => {
 
@@ -126,7 +126,7 @@ export default class SortDropDown {
 	};
 
 	/**
-     * Regarde si le click a eu lieu dans le dropdown et appel toggleDropDown() sinon
+     * click outside menu to toggle off
      * @param {PointerEvent} e 
      */
 	clickOut = (e) => {

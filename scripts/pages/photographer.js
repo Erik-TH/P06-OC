@@ -46,53 +46,43 @@ try {
 	Error.print(error, true);
 }
 
-// Configuration du comportement des tags sur la pages
-
-// Tag.config({
-//     oneAtTime: true,
-//     callback: () => { Media.setVisbilityFromFilters() }
-// })
-
-// Photographe
-
-// Récupération de l'ID du photographe
+// get photographer's id
 const photographerId = getParam('id');
 
-// Création des éléments
+// add element
 let photographer = new Photographer(Api.getPhotographerById(photographerId));
 
-// Injection dans le document
+// inject element
 Photographer.instances.forEach(i => {
 	injectElement(i.element, photographerTarget);
 });
 
-// Trier par
-
-// Création d'un élément de tri
+// Sort
+// add
 const sort = new SortDropDown();
 
-// Injection dans le document
+// inject
 injectElement(sort.getView(), sortTarget);
 
-// Gallerie photos
+// gallery - photos videos
 
-// Récupération des medias du photographe
+// get medias by id
 const medias = Api.getMediaFromPhotographer(photographerId);
 
-// Création des médias
+// add medias
 medias.forEach(media => new Media(media, mediaTarget));
-// Tri par defaut
+// sort by popularity by default
 Media.sortBy(SortDropDown.value);
 
-// Carte infos photographe (total likes et prix)
+// photographer's card : likes / price
 
-// Création de l'élément
+// add
 const cardInfos = new CardInfos(photographer.price);
 
-// Injection dans le document
+// inject
 injectElement(cardInfos.getView(), cardInfosTarget);
 
 
-// Initialisation du formulaire de contact
+// add contact form on photographer's page
 
 FormContact.init();

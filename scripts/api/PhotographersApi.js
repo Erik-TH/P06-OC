@@ -1,15 +1,12 @@
 import Error from '../utils/Error.js';
 
-/**
- * Cette classe simule une api, elle devra être modifier une fois l'api créer
- */
 export default class Api {
 
 	static photographers;
 	static medias;
 
 	/**
-     * Cette fonction récupère les données du fichier Json et les stocks dans des variables statiques
+     * fetch data.json to statics : photographers, medias
      */
 	static init = async () => {
 		const req = await fetch('data/photographers.json');
@@ -23,7 +20,7 @@ export default class Api {
 	};
 
 	/**
-     * Cette fonction récupère tout les photographes
+     * get all photographers
      * @returns {object}
      */
 	static getAllPhotographers = () => {
@@ -31,7 +28,7 @@ export default class Api {
 	};
 
 	/**
-     * Cette fonction récupère les informations d'un photographe via son id
+     * get photographer by id to object
      * @param {number} id 
      * @returns {object}
      */
@@ -40,32 +37,13 @@ export default class Api {
 
 		if (!isNaN(id)) {
 			const res = Api.photographers.find(photographer => photographer.id === id);
+
 			return res || Error.print('Ce photographe n\'existe pas', true);
 		}
 	};
 
 	/**
-     * Cette fonction récupère tout les tags de tout les photographes
-     * @returns {array}
-     */
-	static getAllTags = () => {
-		let allTags = [];
-
-		Api.photographers.forEach(photographer => {
-			let tagsPhotographer = photographer.tags;
-            
-			tagsPhotographer.forEach(tag => {
-				if (!allTags.includes(tag)) {
-					allTags = [...allTags, tag];
-				}
-			});
-		});
-
-		return allTags;
-	};
-
-	/**
-     * Cette fonction récupère tout les médias d'un photographe
+     * get media by id
      * @param {number} id 
      * @returns 
      */

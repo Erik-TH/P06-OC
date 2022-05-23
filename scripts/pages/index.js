@@ -1,31 +1,21 @@
-// -----------------------------------------
-// Import des classes
-// -----------------------------------------
+// imports classes
 
 import Api from '../api/PhotographersApi.js';
 import Error from '../utils/Error.js';
 import Photographer from '../factories/PhotographerFactory.js';
 
-// -----------------------------------------
-// Définition des cibles sur le document
-// -----------------------------------------
+// target in DOM
 
-let tagTarget = document.getElementById('tags');
 let photographerTarget = document.getElementById('photographers-list');
 
-// -----------------------------------------
-// Fonctions
-// -----------------------------------------
+// function inject elemnent in
 
 const injectElement = (element, target) => {
 	target.appendChild(element);
 };
 
-// -----------------------------------------
-// Comportement par défaut (une fois la page chargé)
-// -----------------------------------------
 
-// const connected = await Api.init()
+// await PhotographersApi
 
 try {
 	await Api.init();
@@ -33,29 +23,10 @@ try {
 	Error.print(error);
 }
 
-// Tags
-
-// Configuration du comportement des tags sur la pages
-// Tag.config({
-//     oneAtTime: false,
-//     callback: () => { Photographer.setVisbilityFromFilters() }
-// })
-
-// Création des éléments
-// Api.getAllTags().forEach(tag => new Tag(tag))
-
-// Injection dans le document
-// Tag.instances.forEach(i => {
-//     injectElement(i.element, tagTarget)
-// })
-
-
-// Photographe
-
-// Création des éléments
+// add elements
 Api.getAllPhotographers().forEach(p => new Photographer(p));
 
-// Injection dans le document
+// inject in DOM
 Photographer.instances.forEach(i => {
 	injectElement(i.element, photographerTarget);
 });

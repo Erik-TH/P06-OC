@@ -1,14 +1,18 @@
 import Photographer from '../factories/PhotographerFactory.js';
 
+// DOM
+
 const _modal = document.getElementById('modal-form');
 const _form = document.getElementById('contact-form');
 const _closeModalBtn = document.getElementById('closeModal');
 const _submitBtn = document.getElementById('submitForm');
 
+// regex 
 const _regex = {
 	text : /^[a-zA-Z \-àâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]+$/,
 	email : /^[a-z0-9._-]+@{1}[a-z0-9.-_]{2,}[.]{1}[a-z]{2,5}$/
 };
+
 const _errors = {
 	empty : 'Veuillez renseigner ce champ.',
 	names : {
@@ -55,28 +59,28 @@ const bindKeys = (e) => {
  */
 const init = () => {
 
-	// Initialisation de la vue
+	// display
 	let name = Photographer.instances[0].name;
 	let formulaire = document.getElementById('contact-form');
 	document.getElementById('form-name').innerHTML += name;
 
-	// Ajout des Events lier au formulaire
+	// event listener on form
 	_modal.addEventListener('click', close);
 	_submitBtn.addEventListener('click', (e) => {
 		e.preventDefault();
 
 		if(formValidate(entriesValidation)){
-			let data = new FormData(_form); // Contient les données du formulaire validé
+			let data = new FormData(_form); // data validated form
 
-			// console log des données du formulaire
+			// console log form data
 			console.group('Données du formulaire');
 			for(let a of data.entries()) { console.log(a[0]+ ' : '+ a[1]); }
 			console.groupEnd();
-			// -----------------------------
-			// Ajouter le code asynchrone ici
-			// -----------------------------
 
-			// À appeller quand l'envoi asynchrone répond avec un status 200 (Ok)
+			// add async
+
+
+			// call on async res ok
 			_form.reset();
 			Object.values(entriesValidation).forEach( value => {
 				value.validate = false;
@@ -84,7 +88,7 @@ const init = () => {
 		}
 	});
 
-	// Ajout des Events lier à la saisi
+	// event on area
 	[...formulaire.elements].forEach(entry => {
 		if (entry.nodeName === 'INPUT' || entry.nodeName === 'TEXTAREA') {
 
@@ -112,7 +116,7 @@ const init = () => {
 };
 
 /**
- * Cette fonction controle la saisi de l'utilisateur sur un champ input type text
+ * input control
  * @param {object} entry 
  * @param {regex} regex 
  * @param {number} minLength 
@@ -136,7 +140,7 @@ const inputTextControl = (entry, regex, minLength = 1, maxLength) => {
 };
 
 /**
- * Cette fonction controle la saisi de l'utilisateur sur un champ input type email
+ * email regex
  * @param {object} entry 
  * @param {regex} regex 
  */
@@ -153,7 +157,7 @@ const inputEmailControl = (entry, regex) => {
 };
 
 /**
- * Cette fonction controle la saisi de l'utilisateur sur un champ textarea
+ * control textarea
  * @param {object} entry 
  * @param {number} minLength 
  * @param {number} maxLength 
@@ -171,7 +175,7 @@ const inputTextareaControl = (entry, minLength = 1, maxLength) => {
 };
 
 /**
- * Cette fonction controle si tout les champs sont renseigné correctement
+ * control all inputs are validated
  * @param {object} entries 
  * @returns {boolean}
  */
@@ -189,7 +193,7 @@ const formValidate = (entries) => {
 
 
 /**
- * Cette fonction créer une erreur sur un element du formulaire
+ * error on element
  * @param {object} elem 
  * @param {string} error 
  */
@@ -203,7 +207,7 @@ const setError = (elem, error) => {
 };
 
 /**
- * Cette fonction supprime une erreur d'un element du formulaire
+ * remove error
  * @param {object} elem 
  */
 const removeError = (elem) => {

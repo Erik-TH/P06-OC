@@ -3,7 +3,7 @@ const main = document.getElementsByTagName('main');
 export default class Error {
 
 	/**
-     * Cette fonction redirige vers la page d'acceuil et stock le message d'erreur pour l'afficher
+     * return to index html
      * @param {string} error 
      */
 	static redirectIndex = (error) => {
@@ -12,7 +12,7 @@ export default class Error {
 	};
 
 	/**
-     * Cette fonction créer et affiche un message d'erreur
+     * display error page
      * @param {string} errorMsg 
      * @param {boolean} returnHome 
      */
