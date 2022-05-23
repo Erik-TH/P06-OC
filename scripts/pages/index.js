@@ -2,24 +2,24 @@
 // Import des classes
 // -----------------------------------------
 
-import Api from '../api/PhotographersApi.js'
-import Error from '../utils/Error.js'
-import Photographer from '../factories/PhotographerFactory.js'
+import Api from '../api/PhotographersApi.js';
+import Error from '../utils/Error.js';
+import Photographer from '../factories/PhotographerFactory.js';
 
 // -----------------------------------------
 // Définition des cibles sur le document
 // -----------------------------------------
 
-let tagTarget = document.getElementById('tags')
-let photographerTarget = document.getElementById('photographers-list')
+let tagTarget = document.getElementById('tags');
+let photographerTarget = document.getElementById('photographers-list');
 
 // -----------------------------------------
 // Fonctions
 // -----------------------------------------
 
 const injectElement = (element, target) => {
-    target.appendChild(element)
-}
+	target.appendChild(element);
+};
 
 // -----------------------------------------
 // Comportement par défaut (une fois la page chargé)
@@ -28,34 +28,34 @@ const injectElement = (element, target) => {
 // const connected = await Api.init()
 
 try {
-    await Api.init()
+	await Api.init();
 } catch (error) {
-    Error.print(error)
+	Error.print(error);
 }
 
 // Tags
 
-    // Configuration du comportement des tags sur la pages
-    // Tag.config({
-    //     oneAtTime: false,
-    //     callback: () => { Photographer.setVisbilityFromFilters() }
-    // })
+// Configuration du comportement des tags sur la pages
+// Tag.config({
+//     oneAtTime: false,
+//     callback: () => { Photographer.setVisbilityFromFilters() }
+// })
 
-    // Création des éléments
-    // Api.getAllTags().forEach(tag => new Tag(tag))
+// Création des éléments
+// Api.getAllTags().forEach(tag => new Tag(tag))
 
-    // Injection dans le document
-    // Tag.instances.forEach(i => {
-    //     injectElement(i.element, tagTarget)
-    // })
+// Injection dans le document
+// Tag.instances.forEach(i => {
+//     injectElement(i.element, tagTarget)
+// })
 
 
 // Photographe
 
-    // Création des éléments
-    Api.getAllPhotographers().forEach(p => new Photographer(p))
+// Création des éléments
+Api.getAllPhotographers().forEach(p => new Photographer(p));
 
-    // Injection dans le document
-    Photographer.instances.forEach(i => {
-        injectElement(i.element, photographerTarget)
-    })
+// Injection dans le document
+Photographer.instances.forEach(i => {
+	injectElement(i.element, photographerTarget);
+});
