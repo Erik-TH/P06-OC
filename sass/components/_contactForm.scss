@@ -16,11 +16,15 @@
 
     &__container{
         position: relative;
-        background-color: $colorSecondary;
+        background-color: lighten($color: $colorSecondary, $amount: 20%);
         padding: 30px 15px;
-        min-height: 100%;
+        min-height: 70%;
 
-        .form-name{ font-size: 2.25rem; margin-bottom: 20px; }
+        .form-name {
+            color: black;
+            font-size: 2.25rem;
+            margin-bottom: 20px;
+        }
     }
 
     .form{
